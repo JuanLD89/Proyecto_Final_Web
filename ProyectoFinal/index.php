@@ -40,7 +40,10 @@
     </nav>
 
     <div class="container" id="main">
-
+      <?php
+        require 'vendor/autoload.php';
+        $consola = new consolasretro\Consola;
+      ?>
         
 
     </div> <!-- /container -->
