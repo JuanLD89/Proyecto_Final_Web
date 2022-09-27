@@ -1,0 +1,24 @@
+{
+    "name": "consolasretro/tienda-online",
+    "description": "creacion de una tienda online",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Victor Jimenez",
+            "email": "victor.jimenez1@udea.edu.co"
+        },
+        {
+            "name": "Juan Esteban Lopez Dominguez",
+            "email": "juan.lopezd1@udea.edu.co"
+        }
+    ],
+    "require": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "consolasretro\\":"src/"
+        }
+    }
+}
