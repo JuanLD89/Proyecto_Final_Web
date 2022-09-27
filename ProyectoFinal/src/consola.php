@@ -4,7 +4,18 @@
 
     class Consola{
 
-        
+        private $config;
+        private $cn = null;
+
+        public function __construct(){
+         
+            $this->config = parse_ini_file(__DIR__.'/../config.ini'); // devuelve el contenido del archivo especificado
+            
+            $this->cn = new \PDO($this->config['dns'], $this->config['usuario'], $this->config['clave'],
+            array(\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+
+            //print_r($this->config);
+        }
 
     }
 
