@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Kawschool Store</title>
+    <title>Consolas Retro</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
