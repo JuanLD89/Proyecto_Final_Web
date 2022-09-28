@@ -8,14 +8,14 @@
         private $cn = null;
 
         public function __construct(){
-         
+
             $this->config = parse_ini_file(__DIR__.'/../config.ini'); // devuelve el contenido del archivo especificado
-            
+
             $this->cn = new \PDO($this->config['dns'], $this->config['usuario'], $this->config['clave'],
             array(\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 
             //print_r($this->config);
-        }
+        } 
         
         public function registrar($_params){
             $sql = "INSERT INTO `consolas`(`consola`, `descripcion`, `foto`, `precio`, `empresas`, `fecha`) VALUES (:consola, :descripcion, :foto, :precio, :empresas, :fecha)";  //Desde SQL se sabe como insertar una nueva consola, no se usa el id, porque este autoincrementa, y tampoco el estado, ya que este tiene un valor predeterminado
@@ -99,7 +99,6 @@
 
             return false;
         }//fetch solo nos trae un registro en especial, solo una consola
-
     }
 
 ?>
