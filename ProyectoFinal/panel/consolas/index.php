@@ -52,8 +52,47 @@
     </nav>
 
     <div class="container" id="main">
-        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="pull-right">
+              <a href="form_registrar.php" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+            </div>
+          </div>
+        </div>
 
+        <div class="row">
+          <div class="col-md-12">
+            <fieldset>
+              <legend>Listado de Consolas</legend>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Consola</th>
+                    <th>Empresa</th>
+                    <th>Precio</th>
+                    <th class = "text-center">Foto</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#</td>
+                    <td>Play Station 1</td>
+                    <td>Sony</td>
+                    <td>230.000</td>
+                    <td class = "text-center">Foto</td>
+                    <td class = "text-center">
+                      <a href="" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>
+                      <a href="form_actualizar.php" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-edit"></span></a>                    
+                    </td>
+                  </tr>
+                </tbody>
+
+              </table>
+            </fieldset>
+          </div>
+        </div>
     </div> <!-- /container -->
 
 
