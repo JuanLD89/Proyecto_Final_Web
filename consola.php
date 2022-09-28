@@ -60,7 +60,7 @@
         }
 
         public function eliminar($id){
-            $sql = "DELETE FROM `consolas` WHERE `id`=:id";
+            $sql = "DELETE FROM `consolas` WHERE `id`=:id ";
             $resultado = $this->cn->prepare($sql);
 
             $_array = array(
