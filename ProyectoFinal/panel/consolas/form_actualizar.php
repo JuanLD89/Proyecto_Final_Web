@@ -51,12 +51,12 @@
       </div>
     </nav>
 
-    <div class="container" id="main" method="../acciones.php" enctype="multipart/form-data">
+    <div class="container" id="main">
         <div class="row">
           <div class="col-md-12">
             <fieldset>
                 <legend>Datos de la consola</legend>
-                <form>
+                <form method="POST" action="../acciones.php" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">

@@ -51,12 +51,12 @@
       </div>
     </nav>
 
-    <div class="container" id="main" method="../acciones.php" enctype="multipart/form-data">
+    <div class="container" id="main" >
         <div class="row">
           <div class="col-md-12">
             <fieldset>
                 <legend>Datos de la consola</legend>
-                <form>
+                <form method="POST" action="../acciones.php" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -79,6 +79,7 @@
                                 <label>Empresa</label>
                                 <select class="form-control" name="empresas" required>
                                     <option value="">--SELECCIONE--</option>
+                                    <option value="1">ACCION</option>
                                 </select>                      
                             </div>
                         </div>
@@ -99,7 +100,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Registrar</button>                
+                    <input type="submit" name="accion" class="btn btn-primary" value="Registrar">               
                     <a href="index.php" class="btn btn-default">Cancelar</a>                
                 </form>
             </fieldset>
