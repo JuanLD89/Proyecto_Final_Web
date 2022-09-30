@@ -98,7 +98,21 @@ else{
                                 <label>Empresa</label>
                                 <select class="form-control" name="empresas" required>
                                     <option value="">--SELECCIONE--</option>
-                                    <option value="1">NINTENDO</option>
+                                    <?php
+                                    require '../../vendor/autoload.php';
+                                    $empresa = new consolasretro\Empresa;                
+                                    $info_empresa = $empresa->mostrar();
+
+                                    $cantidad=count($info_empresa); //almacena todas las empresas
+                                    for($x=0; $x<$cantidad;$x++){
+                                      $item = $info_empresa[$x];                                    
+                                    ?>
+                                      <option value="<?php print $item['id'] ?>"
+                                        <?php print $resultado['empresas']==$item['id']?'selected':''?>
+                                      > <?php print $item['nombre'] ?></option>
+                                    <?php
+                                    }
+                                    ?>
                                   </select>                      
                             </div>
                         </div>

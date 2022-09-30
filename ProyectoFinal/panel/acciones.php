@@ -78,6 +78,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){ //Se verifica que la info llegue a tr
     }
 
 }
+
+if($_SERVER['REQUEST_METHOD'] === 'GET'){
+
+    $id = $_GET['id'];
+
+    $rpt = $consola->Eliminar($id);
+
+    if ($rpt)
+        header('Location: consolas/index.php');
+    else
+        print 'Error al eliminar la consola';
+}
+
 function subirFoto(){  
     $carpeta = __DIR__.'/../upload/';
     $archivo = $carpeta.$_FILES['foto']['name'];

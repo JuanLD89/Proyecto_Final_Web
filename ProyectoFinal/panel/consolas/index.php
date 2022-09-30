@@ -111,7 +111,7 @@
                       
                     </td>
                     <td class = "text-center">
-                      <a href="" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>
+                      <a href="../acciones.php?id=<?php print $item['id'] ?>" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>
                       <a href="form_actualizar.php?id=<?php print $item['id'] ?>" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-edit"></span></a>                    
                     </td>
                   </tr>
