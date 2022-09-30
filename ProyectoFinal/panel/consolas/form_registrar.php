@@ -79,7 +79,7 @@
                                 <label>Empresa</label>
                                 <select class="form-control" name="empresas" required>
                                     <option value="">--SELECCIONE--</option>
-                                    <option value="1">ACCION</option>
+                                    <option value="1">NINTENDO</option>
                                 </select>                      
                             </div>
                         </div>

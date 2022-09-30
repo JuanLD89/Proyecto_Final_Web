@@ -1,3 +1,21 @@
+<?php
+require '../../vendor/autoload.php';
+
+if (isset($_GET['id']) && is_numeric($_GET['id'])){
+  $id = $_GET['id'];
+
+  $consola = new consolasretro\Consola;
+  $resultado = $consola->mostrarPorId($id);
+
+  if(!$resultado)
+  header('Location: index.php');
+}
+else{
+  header('Location: index.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -57,11 +75,12 @@
             <fieldset>
                 <legend>Datos de la consola</legend>
                 <form method="POST" action="../acciones.php" enctype="multipart/form-data">
-                    <div class="row">
+                    <input type="hidden" name="id" value="<?php print $resultado['id'] ?>">
+                  <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Nombre de la Consola</label>
-                                <input type="text" class="form-control" name="consola"required>
+                                <input value="<?php print $resultado['consola'] ?>" type="text" class="form-control" name="consola"required>
                             </div>
                         </div>
                     </div>
@@ -69,7 +88,7 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label>Descripcion de la Consola</label>
-                                <textarea class="form-control" name="descripcion" id="" cols="3" required></textarea>                 
+                                <textarea class="form-control" name="descripcion" id="" cols="3" required><?php print $resultado['descripcion'] ?></textarea>                 
                         </div>
                         </div>
                     </div>
@@ -79,7 +98,8 @@
                                 <label>Empresa</label>
                                 <select class="form-control" name="empresas" required>
                                     <option value="">--SELECCIONE--</option>
-                                </select>                      
+                                    <option value="1">NINTENDO</option>
+                                  </select>                      
                             </div>
                         </div>
                     </div>
@@ -87,19 +107,20 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label>Imagen de la Consola</label>
-                                <input type="file" class="form-control" name="foto" required>
-                            </div>
+                                <input type="file" class="form-control" name="foto">
+                                <input type="hidden" name="foto_temp" value="<?php print $resultado['foto'] ?>">
+                              </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Precio de la Consola</label>
-                                <input type="text" class="form-control" name="precio" placeholder="0.00" required>
+                                <input value="<?php print $resultado['precio'] ?>" type="text" class="form-control" name="precio" placeholder="0.00" required>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Actualizar</button>                
+                    <input type="submit" name="accion" class="btn btn-primary" value="Actualizar">             
                     <a href="index.php" class="btn btn-default">Cancelar</a>                
                 </form>
             </fieldset>

@@ -40,7 +40,7 @@
         //execute se encarga de ejecutar todos los parametros que le enviamos a nuestro arreglo
 
         public function actualizar($_params){
-            $sql = "UPDATE `consolas` SET `consola`=:consola,`descripcion`=:descripcion,`foto`=:foto,`precio`=:precio,`empresas`=:empresas,`fecha`=:fecha WHERE 'id'=:id";//sale desde SQL de la base de datos, obviamos id ya que esta autoincrementano, y estado, ya que esta predeterminado
+            $sql = "UPDATE `consolas` SET `consola`=:consola,`descripcion`=:descripcion,`foto`=:foto,`precio`=:precio,`empresas`=:empresas,`fecha`=:fecha WHERE `id`=:id";//sale desde SQL de la base de datos, obviamos id ya que esta autoincrementano, y estado, ya que esta predeterminado
 
             $resultado = $this->cn->prepare($sql);
 
@@ -51,7 +51,7 @@
                 ":precio" => $_params['precio'],
                 ":empresas" => $_params['empresas'],
                 ":fecha"=> $_params['fecha'],
-                ":id" => $_params['id'],
+                ":id" => $_params['id']
             );
             if($resultado->execute($_array))
                 return true;
@@ -64,7 +64,7 @@
             $resultado = $this->cn->prepare($sql);
 
             $_array = array(
-                ":id" => $_params['id'],
+                ":id" => $id
             );
             if($resultado->execute($_array))
                 return true;
@@ -91,7 +91,7 @@
             $resultado = $this->cn->prepare($sql);
 
             $_array = array(
-                ":id" => $_params['id'],
+                ":id" => $id,
             );
 
             if($resultado->execute($_array))
