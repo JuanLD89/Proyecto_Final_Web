@@ -100,7 +100,7 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label>Imagen de la Consola</label>
-                                <input type="file" class="form-control" name="foto" required>
+                                <input type="file" class="form-control" name="foto">
                             </div>
                         </div>
                     </div>
