@@ -71,7 +71,7 @@
           </div>
           <div class="panel-footer">
               <a href="carrito.php?id=<?php print $item['id'] ?>" class="btn btn-success btn-block">
-                <span class="glyphicon glyphicon-shopping-cart"> Comprar</span>
+                <span class="glyphicon glyphicon-shopping-cart"></span> Comprar
               </a>
           </div>
           </div>
