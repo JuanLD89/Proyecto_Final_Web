@@ -10,6 +10,14 @@
         );
     }
 
+    function actualizarConsola($id,$cantidad = FALSE){
+        if($cantidad){
+            $_SESSION['carrito'][$id]['cantidad'] = $cantidad;       
+        }else{
+            $_SESSION['carrito'][$id]['cantidad']+=1;       
+        }
+    }
+
     function calcularTotal(){
 
     }
@@ -17,3 +25,4 @@
     function cantidadConsolas(){
 
     }
+?>

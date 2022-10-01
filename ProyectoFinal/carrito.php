@@ -14,10 +14,19 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){ //se valida si existe el id y
     if(!$resultado)
         header('Location: index.php');
 
-        agregarConsola($resultado, $id);
+    if(isset($_SESSION['carrito'])){        //si el carrito existe
+        if(array_key_exists($id,$_SESSION['carrito'])){ //si la consola existe en el carrito
+            actualizarConsola($id);
+        }else{  //si el carrito no existe en el carrito
+            agregarConsola($resultado, $id);
+        }
+    }else{  //si el carrito no existe
+        agregarConsola($resultado, $id);           
+    }
 
-        print '<pre>';
-        print_r($_SESSION['carrito']);
+    print '<pre>';
+    print_r($_SESSION['carrito']);
+    die;
            
 }  
 
