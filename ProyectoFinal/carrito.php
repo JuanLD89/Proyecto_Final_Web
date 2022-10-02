@@ -24,9 +24,6 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){ //se valida si existe el id y
         agregarConsola($resultado, $id);           
     }
 
-    print '<pre>';
-    print_r($_SESSION['carrito']);
-    die;
            
 }  
 
@@ -65,7 +62,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){ //se valida si existe el id y
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav pull-right">
             <li>
-              <a href="" class="btn">CARRITO <span class="badge">0</span></a>
+              <a href="" class="btn">CARRITO <span class="badge"><?php print cantidadConsolas(); ?></span></a>
             </li> 
           </ul>
         </div><!--/.nav-collapse -->
@@ -73,6 +70,99 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){ //se valida si existe el id y
     </nav>
 
     <div class="container" id="main">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Consola o videojuego</th>
+            <th>Foto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+            if(isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])){
+              $c=0;
+              foreach ($_SESSION['carrito'] as $indice => $value) {
+                  $c++;
+                  $total = $value['precio'] * $value['cantidad'];
+          ?>
+          <tr>
+            <form action="actualizar_carrito.php" method="post">
+            <td>
+              <?php
+                print $c
+              ?>
+            </td>
+            <td>
+              <?php
+                print $value['consola']
+              ?>
+            </td>
+            <td>
+              <?php
+                $foto = 'upload/'.$value['foto'];
+                if(file_exists($foto)){
+              ?>
+              <img src="<?php print $foto; ?>" width="150" height="130">
+              <?php
+                } else{
+              ?>
+              <img src="assets/imagenes/not-found.jpg" width="150" height="130">
+              <?php
+                }
+              ?>
+            </td>
+            <td>
+              <?php
+                print $value['precio']
+              ?>
+            </td>
+            <td>
+              <input type="hidden" name="id" value="<?php print $value['id'] ?>">
+              <input type="text" name="cantidad" class="form-control u-size-100" value="<?php print $value['cantidad'] ?>">
+            </td>
+            <td>
+              <?php
+                print $total
+              ?>
+            </td>
+            <td>
+              <button type="submit" class="btn btn-success btn-xs">
+                <span class="glyphicon glyphicon-refresh"></span>
+              </button>
+
+              <a href="eliminar_carrito.php?id=<?php print $value['id'] ?>" class="btn btn-danger btn-xs">
+                <span class="glyphicon glyphicon-trash"></span>
+              </a>
+            </td>
+            </form>
+          </tr>
+          <?php
+            }
+            }else{
+
+            
+          ?>
+            <tr>
+              <td colspan="7">NO HAY PRODUCTOS EN EL CARRITO</td>
+            </tr>
+          <?php
+            }
+          ?>
+          
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5" class="text-right">Total</td>
+            <td><?php print calcularTotal(); ?></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
 
 
     </div> <!-- /container -->
