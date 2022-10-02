@@ -60,7 +60,7 @@
               $foto = 'upload/'.$item['foto'];
                 if(file_exists($foto)){
             ?>
-            <img src="<?php print $foto; ?>" class="img-responsive">
+            <img src="<?php print $foto; ?>" width="200" height="180">
             <?php
               } else{
             ?>
