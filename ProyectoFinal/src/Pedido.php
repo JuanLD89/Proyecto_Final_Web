@@ -54,4 +54,75 @@
 
             return false;
         }
+
+        public function mostrar()
+        {
+            $sql = "SELECT p.id, nombre, apellidos, email, total, fecha FROM pedidos p
+            INNER JOIN clientes c ON p.cliente_id = c.id ORDER BY p.id DESC";
+
+            $resultado = $this->cn->prepare($sql);
+            
+            if($resultado->execute())
+            return $resultado->fetchAll();
+
+            return false;
+
+        }
+
+        public function mostrarUltimos()
+        {
+            $sql = "SELECT p.id, nombre, apellidos, email, total, fecha FROM pedidos p
+            INNER JOIN clientes c ON p.cliente_id = c.id ORDER BY p.id DESC LIMIT 10";
+
+            $resultado = $this->cn->prepare($sql);
+            
+            if($resultado->execute())
+            return $resultado->fetchAll();
+
+            return false;
+
+        }
+
+        public function mostrarPorId($id)
+        {
+            $sql = "SELECT p.id, nombre, apellidos, email, total, fecha FROM pedidos p
+            INNER JOIN clientes c ON p.cliente_id = c.id WHERE p.id = :id";
+
+            $resultado = $this->cn->prepare($sql);
+
+            $_array = array(
+                ':id'=>$id
+            );
+            
+            if($resultado->execute($_array))
+            return $resultado->fetch();
+
+            return false;
+        }
+        
+
+        public function mostrarDetallePorIdPedido($id)
+        {
+            $sql = "SELECT
+                    dp.id,
+                    co.consola,
+                    dp.precio,
+                    dp.cantidad,
+                    co.foto
+                    FROM detalle_pedidos dp
+                    INNER JOIN consolas co ON co.id = dp.consola_id
+                    WHERE dp.pedido_id=:id";
+
+            $resultado = $this->cn->prepare($sql);
+
+            $_array = array(
+                ':id'=>$id
+            );
+            
+            if($resultado->execute($_array))
+            return $resultado->fetchAll();
+
+            return false;
+
+        }
     }
