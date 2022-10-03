@@ -26,7 +26,7 @@
             $_array = array(
                 ":cliente_id" => $_params['cliente_id'],
                 ":total" => $_params['total'],
-                ":fecha" => $_params['fecha']               
+                ":fecha" => $_params['fecha'],           
             );//se indica cuales son los parametros
 
             if($resultado->execute($_array))
@@ -36,8 +36,7 @@
         }
 
         public function registrarDetalle($_params){
-            $sql = "INSERT INTO `detalle_pedidos`(`pedido_id`, `consola_id`, `precio`, `cantidad`)
-            VALUES (:pedido_id,:consola_id,:precio,:cantidad)";  //Desde SQL se sabe como insertar una nueva consola, no se usa el id, porque este autoincrementa, y tampoco el estado, ya que este tiene un valor predeterminado
+            $sql = "INSERT INTO `detalle_pedidos`(`pedido_id`, `consola_id`, `precio`, `cantidad`) VALUES (:pedido_id,:consola_id,:precio,:cantidad)";  //Desde SQL se sabe como insertar una nueva consola, no se usa el id, porque este autoincrementa, y tampoco el estado, ya que este tiene un valor predeterminado
             //Lo unico que campoa son los datos depuest de VALUE y esto es porque usamos PDO, y reconoce esos datos como parametros
 
             $resultado = $this->cn->prepare($sql); //se encarga de devolvernos cual es el resultado final despues de ejecutar la consulta, cn se encarga de tomar la ruta a la base de datos
@@ -47,7 +46,7 @@
                 ":pedido_id" => $_params['pedido_id'],
                 ":consola_id" => $_params['consola_id'],
                 ":precio" => $_params['precio'],
-                ":cantidad" => $_params['cantidad']                  
+                ":cantidad" => $_params['cantidad'],                 
             );//se indica cuales son los parametros
 
             if($resultado->execute($_array))

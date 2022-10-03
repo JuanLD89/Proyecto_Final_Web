@@ -5,18 +5,44 @@ session_start();
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     require 'funciones.php';
-    $cliente = new consolasretro\Cliente;
+    require 'vendor/autoload.php';
 
-    $_params = array(
-        'nombre' => $_POST['nombre'],
-        'apellidos' => $_POST['apellidos'],
-        'email' => $_POST['email'],
-        'telefono' => $_POST['telefono'],
-        'comentario' => $_POST['comentario']
-    );
+    if(isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])){
+        $cliente = new consolasretro\Cliente;
 
-    $cliente_id = $cliente->registrar($_params);
+        $_params = array(
+            'nombre' => $_POST['nombre'],
+            'apellidos' => $_POST['apellidos'],
+            'email' => $_POST['email'],
+            'telefono' => $_POST['telefono'],
+            'comentario' => $_POST['comentario']
+        );
 
-    $pedido = new consolasretro\Pedido;
+        $cliente_id = $cliente->registrar($_params);
+
+        $pedido = new consolasretro\Pedido;
+
+        $_params = array(
+            'cliente_id' => $cliente_id,
+            'total' => calcularTotal(),
+            'fecha' => date('Y-m-d')
+
+        );
+
+        $pedido_id = $pedido->registrar($_params);
+        foreach ($_SESSION['carrito'] as $indice => $value){
+            $_params = array(
+                "pedido_id" => $pedido_id,
+                "consola_id" => $value['id'],
+                "precio" => $value['precio'],
+                "cantidad" => $value['cantidad']                  
+            );
+
+            $pedido->registrarDetalle($_params);
+        }
+        $_SESSION['carrito'] = array();
+
+        header('Location: gracias.php');
+    }
 
 }
