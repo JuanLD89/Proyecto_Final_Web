@@ -1,4 +1,9 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
+    header('Location: ../index.php');
+
 require '../../vendor/autoload.php';
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])){
@@ -56,9 +61,9 @@ else{
               <a href="index.php" class="btn">Consolas</a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php print $_SESSION['usuario_info']['nombre_usuario'] ?><span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Cerrar Sesión</a></li>
+                    <li><a href="../cerrar_session.php">Cerrar Sesión</a></li>
                 </ul>
             </li> 
           </ul>
