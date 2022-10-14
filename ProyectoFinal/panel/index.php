@@ -27,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">Consolas Retro</a>
+          <a class="navbar-brand" href="../index.php">Consolas Retro</a>
         </div>
         
       </div>
