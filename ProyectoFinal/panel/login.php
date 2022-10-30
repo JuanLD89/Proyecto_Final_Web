@@ -18,7 +18,8 @@
 
             header('Location: dashboard.php');
         }else{
-            exit(json_encode(array('estado'=>FALSE,'mensaje'=>'Error al iniciar sesion')));
+            //exit(json_encode(array('estado'=>FALSE,'mensaje'=>'Error al iniciar sesion')));
+            header('Location: error.php');
         }
 
    }
